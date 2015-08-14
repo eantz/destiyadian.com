@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Destiya Dian</title>
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12" id="most-top">
+        <h1 id="title-name"></h1>
+        <h2 id="random-title"><span id="i"></span> <span id="random"></span> <span id="randomly"></span></h2>
+        <h3 id="random-range"><span id="from-text"></span> <span id="from"></span> <span id="to-text"></span> <span id="to"></span></h3>
+      </div>
+      <div class="col-md-4 col-md-offset-4" id="most-bottom">
+        <a href="#" id="aboutlink">about</a> | <a href="#" id="techlink">techstack</a> | 
+        and proudly hosted on <a href="https://digitalocean.com">digital ocean</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay" class="container-fluid">
+    <a href="#" id="close"></a>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div id="content"></div>    
+      </div>
+    </div>
+    
+  </div>
+
+  <div id="techcontent">
+    <strong>This page is powered by :</strong>
+    <ul>
+      <li><a href="http://getbootstrap.com">Bootstrap</a> <span class="info">(It's overkill !! But, yeah, I love it.)</span></li>
+      <li><a href="http://jquery.com">Jquery</a></li>
+      <li><a href="https://github.com/Zhouzi/TheaterJS">TheaterJS</a></li>
+      <li><a href="https://github.com/jnicol/particleground">Particleground</a></li>
+      <li><a href="http://google.com/fonts">Google Fonts</a></li>
+    </ul>
+  </div>
+
+  <div id="aboutcontent">
+    <p>This page is just waiting page for the upcoming "real" page. There will be a blog here. Just wait for it.</p>
+    <p>For now, if you want to contact me, please feel free to email me at <a href="mailto:destiya.dian@gmail.com">destiya.dian@gmail.com</a></p>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/theater.js"></script>
+  <script src="js/jquery-particleground.js"></script>
+
+  <script>
+    function resize () {
+      var height = $(window).height();
+      var width = $(window).width();
+
+      $('.container-fluid, .row').height(height);
+
+      topPar = height - (height / 2 - 100);
+      console.log(topPar);
+      $('#title-name').css({'margin-top':-topPar});
+    }
+
+    function play_theater(theater) {
+      theater.on('say:start', function(e, args) {
+        current = $(this)[0].current;
+        if(current.name == 'Random' || current.name == 'From' || current.name == 'To') {
+          $('#' + current.voice.id).addClass('with-bg');
+        }
+      })
+      .on('say:done', function(e) {
+        theater = new TheaterJS();
+        play_theater(theater);
+      });
+
+      theater
+        .describe('Name', 1, '#title-name')
+        .describe('I', 1, '#i')
+        .describe('Randomly', 0.8, '#randomly')
+        .describe('Random', 1, '#random')
+        .describe('FromText', 1, '#from-text')
+        .describe('From', 0.7, '#from')
+        .describe('ToText', 1, '#to-text')
+        .describe('To', 0.8, '#to');
+
+      theater
+        .write("Name:Hi I'm Destiya", 1500)
+        .write('I:I', 100)
+        .write('Random:write', 500)
+        .write('Randomly:random things', 1000)
+        .write('FromText:From', 400)
+        .write('From:Travelling', 600)
+        .write('ToText:to', 300)
+        .write('To:Coding', 1500)
+        .write('Random:eat', 2000)
+        .write('From:Sea Food', 800)
+        .write('To:Chinese Food', 1500)
+        .write(5000)
+        .write(function() {
+          $('#title-name, #i, #randomly, #random, #from-text, #to-text, #from, #to').text('');
+          $('#random, #from, #to').removeClass('with-bg');
+          this.emit('say', 'done');
+        });
+
+        // play_theater(theater);
+    }
+
+    $(function() {
+      $(window).resize(function() {
+        resize();
+      });
+
+      resize();
+
+
+      $('#most-top').particleground({
+        dotColor: '#f5f5f5',
+        lineColor: '#eeeeee',
+        minSpeedX: 0.2,
+        maxSpeedX: 0.8,
+        minSpeedY: 0.2,
+        maxSpeedY: 0.8,
+        directionX: 'center',
+        directionY: 'center',
+        density: 10000,
+        particleRadius: 2,
+        lineWidth: 0.3,
+        curvedLines: false,
+        proximity: 100,
+        parallax: true,
+        parallaxMultiplier: 10
+      });
+
+      var theater = new TheaterJS();
+
+      play_theater(theater);
+
+      $('#techlink').on('click', function(e) {
+        e.preventDefault();
+        $('#overlay #content').html($('#techcontent').html());
+        $('#overlay').addClass('open');
+      });
+
+      $('#aboutlink').on('click', function(e) {
+        e.preventDefault();
+        $('#overlay #content').html($('#aboutcontent').html());
+        $('#overlay').addClass('open');
+      });
+
+      $('#overlay #close').on('click', function(e) {
+        e.preventDefault();
+        $('#overlay').removeClass('open');
+      });
+      
+    });
+  </script>
+</body>
+</html>
