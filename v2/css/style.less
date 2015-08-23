@@ -1,0 +1,133 @@
+/* Global Var */
+@bg-color: #EEEDEF;
+@fore-color: #FFFEFF; 
+@shadow-color: #D3D2D3;
+@accent-color: #00c853;
+
+.block {
+    box-sizing: border-box;
+    display: block;
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+}
+
+.inline-block {
+    box-sizing: border-box;
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    width: auto;
+}
+
+.card {
+    background: @fore-color;
+    box-shadow: 0px 1px 2px 1px @shadow-color;
+    margin: 10px;
+    padding: 3px;
+}
+
+.btn {
+    box-shadow: 0px 1px 2px 1px @shadow-color;
+    display: inline-block;
+    padding: 10px;
+}
+
+/* End of Global Var */
+
+/* Global Style */
+html {
+    background: @bg-color;
+}
+
+.btn-more {
+    .btn;
+    background: @accent-color;
+}
+/* End of Global Style */
+
+/* Top Menu */
+#top-menu {
+    .block;
+    .card;
+    margin: 0;
+
+    ul {
+        margin: 0;
+        list-style: none;
+
+        > li {
+            .inline-block;
+            padding: 10px 5px;
+        }
+    }
+}
+
+/* End of Top Menu */
+
+/* Hero */
+#hero {
+    .block;
+    background: @accent-color;
+    height: 200px;
+    margin: 0;
+    position: relative;
+}
+
+#tagline-container {
+    .block;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    #tagline {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 200px;
+    }
+
+    h1 {
+        color: #fff;
+        text-align: center;
+        width: 90%;
+    }
+}
+/* End of Hero */
+
+/* About */
+#about {
+    .block;
+    .card;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 10px 40px;
+}
+/* End of About */
+
+/* Portfolio */
+#portfolio {
+    .block;
+    .card;
+    margin-left: 0;
+    padding: 10px;
+
+    .portfolio {
+        .block;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        width: 100%;
+
+        .portfolio-img-container, .portfolio-desc-container {
+            .inline-block;
+            float: left;
+        }
+
+        .portfolio-desc-container {
+            margin-left: 20px;
+        }
+    }
+}
+/* End of Portfolio */

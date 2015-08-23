@@ -1,0 +1,151 @@
+/* Global Var */
+.block {
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+}
+.inline-block {
+  box-sizing: border-box;
+  display: inline-block;
+  height: auto;
+  overflow: hidden;
+  width: auto;
+}
+.card {
+  background: #fffeff;
+  box-shadow: 0px 1px 2px 1px #d3d2d3;
+  margin: 10px;
+  padding: 3px;
+}
+.btn {
+  box-shadow: 0px 1px 2px 1px #d3d2d3;
+  display: inline-block;
+  padding: 10px;
+}
+/* End of Global Var */
+/* Global Style */
+html {
+  background: #eeedef;
+}
+.btn-more {
+  box-shadow: 0px 1px 2px 1px #d3d2d3;
+  display: inline-block;
+  padding: 10px;
+  background: #00c853;
+}
+/* End of Global Style */
+/* Top Menu */
+#top-menu {
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  background: #fffeff;
+  box-shadow: 0px 1px 2px 1px #d3d2d3;
+  margin: 10px;
+  padding: 3px;
+  margin: 0;
+}
+#top-menu ul {
+  margin: 0;
+  list-style: none;
+}
+#top-menu ul > li {
+  box-sizing: border-box;
+  display: inline-block;
+  height: auto;
+  overflow: hidden;
+  width: auto;
+  padding: 10px 5px;
+}
+/* End of Top Menu */
+/* Hero */
+#hero {
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  background: #00c853;
+  height: 200px;
+  margin: 0;
+  position: relative;
+}
+#tagline-container {
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+#tagline-container #tagline {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 200px;
+}
+#tagline-container h1 {
+  color: #fff;
+  text-align: center;
+  width: 90%;
+}
+/* End of Hero */
+/* About */
+#about {
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  background: #fffeff;
+  box-shadow: 0px 1px 2px 1px #d3d2d3;
+  margin: 10px;
+  padding: 3px;
+  margin-left: 0;
+  margin-top: 0;
+  padding: 10px 40px;
+}
+/* End of About */
+/* Portfolio */
+#portfolio {
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  background: #fffeff;
+  box-shadow: 0px 1px 2px 1px #d3d2d3;
+  margin: 10px;
+  padding: 3px;
+  margin-left: 0;
+  padding: 10px;
+}
+#portfolio .portfolio {
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+#portfolio .portfolio .portfolio-img-container,
+#portfolio .portfolio .portfolio-desc-container {
+  box-sizing: border-box;
+  display: inline-block;
+  height: auto;
+  overflow: hidden;
+  width: auto;
+  float: left;
+}
+#portfolio .portfolio .portfolio-desc-container {
+  margin-left: 20px;
+}
+/* End of Portfolio */
