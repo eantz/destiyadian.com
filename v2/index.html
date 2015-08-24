@@ -40,6 +40,10 @@
     <div id="portfolio"></div>
     <footer></footer>
 
+    <div id="modal-container">
+        
+    </div>
+
     <script type="text/babel">
         React.render(
             <ul>
@@ -54,10 +58,17 @@
         );
 
         var PortfolioItem = React.createClass({
+            handleMoreClick: function(e) {
+                e.preventDefault();
+                React.render(
+                    <FullPortfolio />,
+                    document.getElementById('modal-container')
+                );
+            },
             render: function() {
                 var portid = this.props.portid;
                 return (
-                    <div className="portfolio">
+                    <div className="portfolio" id="{portid}">
                         <div className="portfolio-img-container">
                             <img src={'http://placehold.it/350x150'} />
                         </div>
@@ -70,7 +81,42 @@
                                 wordpress / bootstrap
                             </div>
 
-                            <a href="#" className="btn-more">More</a>
+                            <a href className="btn-more" onClick={this.handleMoreClick}>More</a>
+                        </div>
+                    </div>
+                );
+            }
+        });
+
+        var FullPortfolio = React.createClass({
+            render: function() {
+                return (
+                    <div className="full-portfolio-container">
+                        <div className="close-portfolio">
+                            X
+                        </div>
+                        <div className="portfolio-full-title">
+                            <h2>{this.props.portfolioTitle}</h2>
+                        </div>
+
+                        <div className="portfolio-full-body">
+                            <div className="portfolio-full-img-container">
+                                <img src={'http://placehold.it/400x300'} />
+                            </div>
+                            <div className="portfolio-full-description-container">
+                                <p className="portfolio-full-description-item">Technology Used : Wordpress</p>
+                                <p className="portfolio-full-description-item">Role : Developer</p>
+
+                                <h3>Summary</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 );

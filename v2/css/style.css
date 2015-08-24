@@ -149,3 +149,12 @@ html {
   margin-left: 20px;
 }
 /* End of Portfolio */
+/* Portfolio Full */
+#modal-container {
+  background: #eeedef;
+  height: auto;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+/* End of Portfolio Full */
