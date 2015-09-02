@@ -51,10 +51,10 @@
         </div>
         <div id="contact-right">
             <ul>
-                <li><a href="#" class="social social-fb">Facebook Profile</a></li>
-                <li><a href="#" class="social social-twitter">@eantz</a></li>
-                <li><a href="#" class="social social-linkedin">LinkedIn Profile</a></li>
-                <li><a href="#" class="social social-github">@eantz</a></li>
+                <li><i class="fa fa-facebook-official"></i> &nbsp;<a href="#" class="social social-fb">Facebook Profile</a></li>
+                <li><i class="fa fa-twitter"></i> &nbsp;<a href="#" class="social social-twitter">@eantz</a></li>
+                <li><i class="fa fa-linkedin"></i> &nbsp;<a href="#" class="social social-linkedin">LinkedIn Profile</a></li>
+                <li><i class="fa fa-github"></i> &nbsp;<a href="#" class="social social-github">@eantz</a></li>
             </ul>
             
         </div>
@@ -72,15 +72,17 @@
             return [width, height];
         }
 
+
+
         var Navigation = React.createClass({
             render: function() {
                 return (
                     <ul>
-                        <li id="nav-to-home"><a href="#"><span className="nav-mobile">d</span> <span className="nav-desktop">destiyadian.com</span></a></li>
-                        <li><a href="#"><i className="fa fa-question-circle"></i> <span className="nav-desktop">About</span></a></li>
-                        <li><a href="#"><i className="fa fa-cubes"></i> <span className="nav-desktop">Portfolio</span></a></li>
-                        <li><a href="#"><i className="fa fa-envelope"></i> <span className="nav-desktop">Contacts</span></a></li>
-                        <li><a href="#"><i className="fa fa-newspaper-o"></i> <span className="nav-desktop">Blog</span></a></li>
+                        <li id="nav-to-home"><a href="http://destiyadian.com"><span className="nav-mobile">d</span> <span className="nav-desktop">destiyadian.com</span></a></li>
+                        <li><a href="#about"><i className="fa fa-question-circle"></i> <span className="nav-desktop">About</span></a></li>
+                        <li><a href="#portfolio"><i className="fa fa-cubes"></i> <span className="nav-desktop">Portfolio</span></a></li>
+                        <li><a href="#contact"><i className="fa fa-envelope"></i> <span className="nav-desktop">Contacts</span></a></li>
+                        <li><a href="http://blog.destiyadian.com" target="_blank"><i className="fa fa-newspaper-o"></i> <span className="nav-desktop">Blog</span></a></li>
                     </ul>
                 );
             }
@@ -123,7 +125,7 @@
                 
                 return (
                     <div>
-                        <h3 onClick={this.handleClick}>Skillset : {this.props.skill}</h3>
+                        <h3><i className="fa fa-arrow-left" id="skillset-close" onClick={this.handleClick}></i>  Skillset : {this.props.skill}</h3>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -142,12 +144,10 @@
             handleMoreClick: function(e) {
                 e.preventDefault();
 
-                var clientS = clientSize();
-
-                console.log(clientS);
+                //var clientS = clientSize();
 
                 React.render(
-                    <FullPortfolio portfolioTitle="hello title" width={clientS[0]} height={clientS[1]} />,
+                    <FullPortfolio portfolioTitle="hello title"/* width={clientS[0]} height={clientS[1]}*/ />,
                     document.getElementById('modal-container')
                 );
             },
@@ -175,11 +175,20 @@
         });
 
         var FullPortfolio = React.createClass({
+            updateDimension: function() {
+                var clientS = clientSize();
+                this.setState({width: clientS[0], height: clientS[1]});
+            },
             componentWillMount: function() {
                 document.body.classList.add('modal-open');
+                this.updateDimension();
+            },
+            componentDidMount: function() {
+                window.addEventListener('resize', this.updateDimension);
             },
             componentWillUnmount: function() {
                 document.body.classList.remove('modal-open');
+                window.removeEventListener('resize', this.updateDimension);
             },
             handleCloseClick: function(e) {
                 e.preventDefault();
@@ -188,12 +197,15 @@
             },
             render: function() {
                 var styles = {
-                    width: this.props.width,
-                    height: this.props.height
+                    // width: this.props.width,
+                    // height: this.props.height
+                    width: this.state.width,
+                    height: this.state.height
                 };
 
                 var imgW = {
-                    'width':0.9 * this.props.width
+                    // 'width':0.9 * this.props.width
+                    'width':0.9 * this.state.width
                 }
 
                 return (

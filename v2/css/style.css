@@ -200,6 +200,19 @@ a {
 #portfolio-container #skillset {
   overflow-x: hidden;
 }
+#portfolio-container #skillset #skillset-close {
+  box-sizing: border-box;
+  display: inline-block;
+  height: auto;
+  overflow: hidden;
+  width: auto;
+  cursor: pointer;
+  margin-right: 15px;
+  margin-top: 6px;
+}
+#portfolio-container #skillset #skillset-close:hover {
+  color: #00c853;
+}
 #portfolio-container #skillset .skillset {
   box-shadow: 0px 1px 2px 1px #d3d2d3;
   color: #fff;
@@ -317,24 +330,29 @@ a {
 #contact a {
   color: #e6e6e6;
 }
+#contact a:hover,
+#contact a:focus {
+  color: #e8e11a;
+}
 #contact #contact-left,
 #contact #contact-right {
   box-sizing: border-box;
-  display: inline-block;
+  display: block;
   height: auto;
   overflow: hidden;
-  width: auto;
-  float: left;
-  width: 50%;
+  width: 100%;
 }
 #contact #contact-left h3 {
-  font-size: 28px;
+  font-size: 18px;
   text-align: center;
   margin-top: 40px;
 }
 #contact #contact-left h3 span {
   color: #b3b3b3;
   font-size: 12px;
+}
+#contact #contact-right {
+  color: #fff;
 }
 #contact #contact-right ul {
   list-style: none;
@@ -344,5 +362,25 @@ a {
 }
 #contact #contact-right ul li a {
   font-weight: bold;
+}
+@media (min-width: 768px) {
+  #contact #contact-left,
+  #contact #contact-right {
+    box-sizing: border-box;
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    width: auto;
+    float: left;
+    width: 50%;
+  }
+  #contact #contact-left h3 {
+    font-size: 24px;
+  }
+}
+@media (min-width: 992px) {
+  #contact #contact-left h3 {
+    font-size: 28px;
+  }
 }
 /* End of Contact */
