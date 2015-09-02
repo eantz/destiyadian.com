@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -37,31 +38,116 @@
             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
     </div>
-    <div id="portfolio"></div>
-    <footer></footer>
+    <div id="portfolio-container">
+        <div id="skillset"></div>
+        <div id="portfolio"></div>
+    </div>
+
+    <div id="contact">
+        <div id="contact-left">
+            <h3>
+                <a href="mailto:destiya.dian@gmail.com" title="">destiya <span>[dot]</span> dian <span>[at]</span> gmail <span>[dot]</span> com</a>
+            </h3>
+        </div>
+        <div id="contact-right">
+            <ul>
+                <li><a href="#" class="social social-fb">Facebook Profile</a></li>
+                <li><a href="#" class="social social-twitter">@eantz</a></li>
+                <li><a href="#" class="social social-linkedin">LinkedIn Profile</a></li>
+                <li><a href="#" class="social social-github">@eantz</a></li>
+            </ul>
+            
+        </div>
+    </div>
 
     <div id="modal-container">
         
     </div>
 
     <script type="text/babel">
-        React.render(
-            <ul>
-                <li><a href="#">destiyadian.com</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contacts</a></li>
-            </ul>
-            ,
-            document.getElementById('top-menu')
-        );
+        function clientSize () {
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.offsetWidth;
+
+            return [width, height];
+        }
+
+        var Navigation = React.createClass({
+            render: function() {
+                return (
+                    <ul>
+                        <li id="nav-to-home"><a href="#"><span className="nav-mobile">d</span> <span className="nav-desktop">destiyadian.com</span></a></li>
+                        <li><a href="#"><i className="fa fa-question-circle"></i> <span className="nav-desktop">About</span></a></li>
+                        <li><a href="#"><i className="fa fa-cubes"></i> <span className="nav-desktop">Portfolio</span></a></li>
+                        <li><a href="#"><i className="fa fa-envelope"></i> <span className="nav-desktop">Contacts</span></a></li>
+                        <li><a href="#"><i className="fa fa-newspaper-o"></i> <span className="nav-desktop">Blog</span></a></li>
+                    </ul>
+                );
+            }
+        });
+
+        var Skillset = React.createClass({
+            handleClick: function(e) {
+
+                React.render(
+                    <SkillsetDesc skill={e.target.innerHTML} />,
+                    document.getElementById('skillset')
+                );
+            },
+            render: function() {
+                return (
+                    <div>
+                        <h2>Skillset</h2>
+                        <p>
+                            <span className="skillset pro" onClick={this.handleClick}>PHP</span>
+                            <span className="skillset intermediate" onClick={this.handleClick}>CSS3</span>
+                            <span className="skillset novice" onClick={this.handleClick}>Laravel</span>
+                            <span className="skillset pro" onClick={this.handleClick}>HTML</span>
+                            <span className="skillset intermediate" onClick={this.handleClick}>JQuery</span>
+                            <span className="skillset novice" onClick={this.handleClick}>WordPress</span>
+                            <span className="skillset pro" onClick={this.handleClick}>CodeIgniter</span>
+                        </p>
+                    </div>
+                );
+            }
+        });
+
+        var SkillsetDesc = React.createClass({
+            handleClick: function(e) {
+                React.render(
+                    <Skillset />,
+                    document.getElementById('skillset')
+                );
+            },
+            render: function() {
+                
+                return (
+                    <div>
+                        <h3 onClick={this.handleClick}>Skillset : {this.props.skill}</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                    
+                );
+            }
+        });
 
         var PortfolioItem = React.createClass({
             handleMoreClick: function(e) {
                 e.preventDefault();
+
+                var clientS = clientSize();
+
+                console.log(clientS);
+
                 React.render(
-                    <FullPortfolio />,
+                    <FullPortfolio portfolioTitle="hello title" width={clientS[0]} height={clientS[1]} />,
                     document.getElementById('modal-container')
                 );
             },
@@ -70,10 +156,10 @@
                 return (
                     <div className="portfolio" id="{portid}">
                         <div className="portfolio-img-container">
-                            <img src={'http://placehold.it/350x150'} />
+                            <img src={'img/portfolio-placeholder.jpg'}  />
                         </div>
                         <div className="portfolio-desc-container">
-                            <h3><a href="#">Site.com</a></h3>
+                            <h3>Site.com</h3>
                             <div className="portfolio-desc">
                                 development / maintenance / design
                             </div>
@@ -89,25 +175,69 @@
         });
 
         var FullPortfolio = React.createClass({
+            componentWillMount: function() {
+                document.body.classList.add('modal-open');
+            },
+            componentWillUnmount: function() {
+                document.body.classList.remove('modal-open');
+            },
+            handleCloseClick: function(e) {
+                e.preventDefault();
+                
+                React.unmountComponentAtNode(document.getElementById('modal-container'));
+            },
             render: function() {
+                var styles = {
+                    width: this.props.width,
+                    height: this.props.height
+                };
+
+                var imgW = {
+                    'width':0.9 * this.props.width
+                }
+
                 return (
-                    <div className="full-portfolio-container">
-                        <div className="close-portfolio">
+                    <div className="full-portfolio-container" style={styles}>
+                        <a href className="btn close-portfolio" onClick={this.handleCloseClick}>
                             X
-                        </div>
+                        </a>
                         <div className="portfolio-full-title">
                             <h2>{this.props.portfolioTitle}</h2>
                         </div>
 
                         <div className="portfolio-full-body">
                             <div className="portfolio-full-img-container">
-                                <img src={'http://placehold.it/400x300'} />
+                                <img src={'img/portfolio-placeholder.jpg'} style={imgW} />
                             </div>
                             <div className="portfolio-full-description-container">
                                 <p className="portfolio-full-description-item">Technology Used : Wordpress</p>
                                 <p className="portfolio-full-description-item">Role : Developer</p>
 
                                 <h3>Summary</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -123,19 +253,40 @@
             }
         });
 
-        
-        var portfolioItem = [];
+        var Portfolio = React.createClass({
+            render: function() {
+                var portfolioItem = [];
 
-        for (var i = 0; i < 4; i++) {
-            portfolioItem.push(<PortfolioItem portid={i} />)
-        };
+                for (var i = 0; i < 4; i++) {
+                    portfolioItem.push(<PortfolioItem portid={i} />)
+                };
 
+                return (
+                    <div>
+                        <h2>Portfolio</h2>
+                        {portfolioItem}
+                    </div>
+                );
+            }
+        });
+
+        React.render(
+            <Navigation />,
+            document.getElementById('top-menu')
+        );
+
+        React.render(
+            <Skillset />,
+            document.getElementById('skillset')
+        );
+
+        React.render(
+            <Portfolio />,
+            document.getElementById('portfolio')
+        );
         
         React.render(
-            <div>
-                {portfolioItem}
-            </div>
-            ,
+            <Portfolio />,
             document.getElementById('portfolio')
         );
 

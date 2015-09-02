@@ -21,7 +21,8 @@
   ],
   "dependencies": {
     "react": "~0.13.3",
-    "particleground": "https://github.com/jnicol/particleground.git"
+    "particleground": "https://github.com/jnicol/particleground.git",
+    "font-awesome": "4.4.0"
   },
   "devDependencies": {
     "jquery": "~2.1.4"
