@@ -1,0 +1,27 @@
+[
+    {
+        "name":"Site.com",
+        "role":["development", "design"],
+        "technology":["PHP", "WordPress"],
+        "thumbnail":"portfolio-placeholder.jpg",
+        "bigpic":"portfolio-placeholder.jpg",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+    },
+    {
+        "name":"Site.com",
+        "role":["development", "design"],
+        "technology":["PHP", "WordPress"],
+        "thumbnail":"portfolio-placeholder.jpg",
+        "bigpic":"portfolio-placeholder.jpg",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+    },
+    {
+        "name":"Site.com",
+        "role":["development", "design"],
+        "technology":["PHP", "WordPress"],
+        "thumbnail":"portfolio-placeholder.jpg",
+        "bigpic":"portfolio-placeholder.jpg",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+    }
+    
+]

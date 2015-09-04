@@ -72,8 +72,6 @@
             return [width, height];
         }
 
-
-
         var Navigation = React.createClass({
             render: function() {
                 return (
@@ -89,25 +87,47 @@
         });
 
         var Skillset = React.createClass({
-            handleClick: function(e) {
-
+            getInitialState: function() {
+                return {
+                    'skills':[]
+                }
+            },
+            handleClick: function(summary, e) {
                 React.render(
-                    <SkillsetDesc skill={e.target.innerHTML} />,
+                    <SkillsetDesc skill={e.target.innerHTML} summary={summary} />,
                     document.getElementById('skillset')
                 );
             },
+            componentWillMount: function() {
+                var thisObj = this;
+
+                $.ajax({
+                    url:'skill.json',
+                    dataType:'json'
+                }).done(function(data) {
+                    var myskills = [];
+
+                    data.map(function(d) {
+                        myskills.push(d);
+                    });
+
+                    thisObj.setState({
+                        skills:myskills
+                    });
+
+                }).fail(function() {
+                    console.log('failed to get skill data');
+                });
+            },
             render: function() {
+                var thisObj = this;
                 return (
                     <div>
                         <h2>Skillset</h2>
                         <p>
-                            <span className="skillset pro" onClick={this.handleClick}>PHP</span>
-                            <span className="skillset intermediate" onClick={this.handleClick}>CSS3</span>
-                            <span className="skillset novice" onClick={this.handleClick}>Laravel</span>
-                            <span className="skillset pro" onClick={this.handleClick}>HTML</span>
-                            <span className="skillset intermediate" onClick={this.handleClick}>JQuery</span>
-                            <span className="skillset novice" onClick={this.handleClick}>WordPress</span>
-                            <span className="skillset pro" onClick={this.handleClick}>CodeIgniter</span>
+                        {this.state.skills.map(function(skill) {
+                            return <span className={"skillset " + skill.level} onClick={thisObj.handleClick.bind(thisObj, skill.summary)}>{skill.name}</span>;
+                        })}
                         </p>
                     </div>
                 );
@@ -127,12 +147,7 @@
                     <div>
                         <h3><i className="fa fa-arrow-left" id="skillset-close" onClick={this.handleClick}></i>  Skillset : {this.props.skill}</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            {this.props.summary}
                         </p>
                     </div>
                     
@@ -141,33 +156,35 @@
         });
 
         var PortfolioItem = React.createClass({
-            handleMoreClick: function(e) {
+
+            handleMoreClick: function(portfolioData, e) {
                 e.preventDefault();
 
-                //var clientS = clientSize();
-
                 React.render(
-                    <FullPortfolio portfolioTitle="hello title"/* width={clientS[0]} height={clientS[1]}*/ />,
+                    <FullPortfolio portfolioData={portfolioData} />,
                     document.getElementById('modal-container')
                 );
             },
             render: function() {
-                var portid = this.props.portid;
                 return (
-                    <div className="portfolio" id="{portid}">
+                    <div className="portfolio">
                         <div className="portfolio-img-container">
-                            <img src={'img/portfolio-placeholder.jpg'}  />
+                            <img src={'img/' + this.props.portfolioData.thumbnail}  />
                         </div>
                         <div className="portfolio-desc-container">
-                            <h3>Site.com</h3>
+                            <h3>{this.props.portfolioData.name}</h3>
                             <div className="portfolio-desc">
-                                development / maintenance / design
+                                {this.props.portfolioData.role.map(function(r) {
+                                    return r;
+                                }).join(' / ')}
                             </div>
                             <div className="portfolio-desc">
-                                wordpress / bootstrap
+                                {this.props.portfolioData.technology.map(function(t) {
+                                    return t;
+                                }).join(' / ')}
                             </div>
 
-                            <a href className="btn-more" onClick={this.handleMoreClick}>More</a>
+                            <a href className="btn-more" onClick={this.handleMoreClick.bind(this, this.props.portfolioData)}>More</a>
                         </div>
                     </div>
                 );
@@ -197,16 +214,14 @@
             },
             render: function() {
                 var styles = {
-                    // width: this.props.width,
-                    // height: this.props.height
                     width: this.state.width,
                     height: this.state.height
                 };
 
                 var imgW = {
-                    // 'width':0.9 * this.props.width
                     'width':0.9 * this.state.width
                 }
+
 
                 return (
                     <div className="full-portfolio-container" style={styles}>
@@ -214,50 +229,29 @@
                             X
                         </a>
                         <div className="portfolio-full-title">
-                            <h2>{this.props.portfolioTitle}</h2>
+                            <h2>{this.props.portfolioData.name}</h2>
                         </div>
 
                         <div className="portfolio-full-body">
                             <div className="portfolio-full-img-container">
-                                <img src={'img/portfolio-placeholder.jpg'} style={imgW} />
+                                <img src={'img/' + this.props.portfolioData.bigpic} style={imgW} />
                             </div>
                             <div className="portfolio-full-description-container">
-                                <p className="portfolio-full-description-item">Technology Used : Wordpress</p>
-                                <p className="portfolio-full-description-item">Role : Developer</p>
+                                <p className="portfolio-full-description-item">Technology Used : 
+                                    {this.props.portfolioData.technology.map(function(t) {
+                                        return t;
+                                    }).join(' / ')}
+                                </p>
+                                <p className="portfolio-full-description-item">Role : 
+                                    {this.props.portfolioData.role.map(function(r) {
+                                        return r;
+                                    }).join(' / ')}
+                                </p>
 
                                 <h3>Summary</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
+                                <div>
+                                    {this.props.portfolioData.description}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -266,17 +260,39 @@
         });
 
         var Portfolio = React.createClass({
+            getInitialState: function() {
+                return {
+                    'portfolios':[]
+                }
+            },
+            componentWillMount: function() {
+                var thisObj = this;
+
+                $.ajax({
+                    url:'portfolio.json',
+                    dataType:'json'
+                }).done(function(data) {
+                    var myportfolio = [];
+
+                    data.map(function(d) {
+                        myportfolio.push(d);
+                    });
+
+                    thisObj.setState({
+                        portfolios:myportfolio
+                    });
+
+                }).fail(function() {
+                    console.log('failed to get portfolio data');
+                });
+            },
             render: function() {
-                var portfolioItem = [];
-
-                for (var i = 0; i < 4; i++) {
-                    portfolioItem.push(<PortfolioItem portid={i} />)
-                };
-
                 return (
                     <div>
                         <h2>Portfolio</h2>
-                        {portfolioItem}
+                        {this.state.portfolios.map(function(portfolio) {
+                            return <PortfolioItem portfolioData={portfolio} />;
+                        })}
                     </div>
                 );
             }
