@@ -2,36 +2,36 @@
     {
         "name":"PHP",
         "level":"pro",
-        "summary":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+        "summary":"I have experience creating web apps using PHP because I started my carrier as PHP developer. Now while I'm not as a developer, I still create some experiments using PHP."
     },
     {
         "name":"CSS3",
         "level":"intermediate",
-        "summary":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+        "summary":"I'm not a designer. I use CSS for prototyping pages, create some basic layouts. I use Bootstrap a lot to make my job easier and I'm a LESS user."
     },
     {
         "name":"Laravel",
         "level":"novice",
-        "summary":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+        "summary":"This rising star framework is really must learned framework. It's packed with complete features, yet easy to extend. I'm still learning it, but it will be my main tool soon."
     },
     {
         "name":"HTML",
         "level":"pro",
-        "summary":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+        "summary":"Every web developer must know and familiar with."
     },
     {
         "name":"jQuery",
         "level":"intermediate",
-        "summary":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+        "summary":"I created web apps at the time when frontend framework like Angular are not so popular like today. And jQuery is always loaded in my page. From manipulating DOM to calling data from server with ajax, it's a 'to go' tool."
     },
     {
         "name":"WordPress",
         "level":"novice",
-        "summary":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+        "summary":"My blog is using WordPress. I create the theme myself. I create some plugins for clients in the past."
     },
     {
         "name":"CodeIgniter",
         "level":"pro",
-        "summary":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora quidem possimus quia iusto culpa fugiat natus nam in perspiciatis, itaque officiis corporis animi magni aperiam, reiciendis beatae, quae aspernatur!"
+        "summary":"You may won't believe that this framework is still exist, but that's the fact. And I master it."
     }
 ]
