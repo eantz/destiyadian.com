@@ -30,12 +30,13 @@
     <div id="about">
         <h2>About Me</h2>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            I'm a manual tester at a robotic company. But I'm a web enthusiast since I started my career as a web developer. I mostly code on PHP using CodeIgniter or Laravel to speed up things. In the past, I played with WordPress too. I don't do design, however when it comes to frontend I utilize Bootstrap and LESS to make my life easier.
+        </p>
+        <p>
+            I love to learn new things. Currently I'm learning Golang and ReactJS. Those two technology become rising star these day. <small>(Note that I build this page using ReactJS)</small>
+        </p>
+        <p>
+            When I'm not on code, you may find me watching AKB48 related videos or following their stories.
         </p>
     </div>
     <div id="portfolio-container">
@@ -78,7 +79,7 @@
                     <ul>
                         <li id="nav-to-home"><a href="http://destiyadian.com"><span className="nav-mobile">d</span> <span className="nav-desktop">destiyadian.com</span></a></li>
                         <li><a href="#about"><i className="fa fa-question-circle"></i> <span className="nav-desktop">About</span></a></li>
-                        <li><a href="#portfolio"><i className="fa fa-cubes"></i> <span className="nav-desktop">Portfolio</span></a></li>
+                        <li><a href="#portfolio"><i className="fa fa-cubes"></i> <span className="nav-desktop">Projects</span></a></li>
                         <li><a href="#contact"><i className="fa fa-envelope"></i> <span className="nav-desktop">Contacts</span></a></li>
                         <li><a href="http://blog.destiyadian.com" target="_blank"><i className="fa fa-newspaper-o"></i> <span className="nav-desktop">Blog</span></a></li>
                     </ul>
@@ -222,6 +223,9 @@
                     'width':0.9 * this.state.width
                 }
 
+                var desc = {__html: this.props.portfolioData.description};
+                var projecturl = this.props.portfolioData.url == '' ? '' : <a href={this.props.portfolioData.url}>{this.props.portfolioData.name}</a>
+
 
                 return (
                     <div className="full-portfolio-container" style={styles}>
@@ -230,6 +234,7 @@
                         </a>
                         <div className="portfolio-full-title">
                             <h2>{this.props.portfolioData.name}</h2>
+                            {projecturl}
                         </div>
 
                         <div className="portfolio-full-body">
@@ -249,9 +254,7 @@
                                 </p>
 
                                 <h3>Summary</h3>
-                                <div>
-                                    {this.props.portfolioData.description}
-                                </div>
+                                <div dangerouslySetInnerHTML={desc} />
                             </div>
                         </div>
                     </div>
@@ -289,7 +292,7 @@
             render: function() {
                 return (
                     <div>
-                        <h2>Portfolio</h2>
+                        <h2>Projects</h2>
                         {this.state.portfolios.map(function(portfolio) {
                             return <PortfolioItem portfolioData={portfolio} />;
                         })}
