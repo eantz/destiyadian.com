@@ -1,4 +1,5 @@
 /* Global Var */
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
 .block {
   box-sizing: border-box;
   display: block;
@@ -28,6 +29,9 @@
 /* Global Style */
 html {
   background: #eeedef;
+}
+html * {
+  font-family: 'Raleway', sans-serif;
 }
 a {
   color: #333;
@@ -310,6 +314,39 @@ a {
 }
 .full-portfolio-container .portfolio-full-title {
   border-bottom: 1px solid #fff;
+  text-align: center;
+}
+.full-portfolio-container .portfolio-full-title h2 {
+  font-size: 32px;
+  margin-bottom: 5px;
+  margin-left: 40px;
+}
+.full-portfolio-container .portfolio-full-title .portfolio-url {
+  display: block;
+  color: #909090;
+}
+.full-portfolio-container .portfolio-full-title .portfolio-url:hover,
+.full-portfolio-container .portfolio-full-title .portfolio-url:focus,
+.full-portfolio-container .portfolio-full-title .portfolio-url:active {
+  color: #5d5d5d;
+}
+.full-portfolio-container .portfolio-full-body {
+  margin-top: 20px;
+}
+.full-portfolio-container .portfolio-full-body .portfolio-full-img-container {
+  text-align: center;
+}
+.full-portfolio-container .portfolio-full-body .portfolio-full-img-container img {
+  margin-bottom: 20px;
+}
+.full-portfolio-container .portfolio-full-body .portfolio-full-description-item {
+  display: block;
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
+.full-portfolio-container .portfolio-full-body h3 {
+  font-size: 24px;
+  margin-top: 30px;
 }
 /* End of Portfolio Full */
 /* Contact */
