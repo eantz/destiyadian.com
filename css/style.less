@@ -63,12 +63,14 @@ a {
 /* End of Global Style */
 
 /* Top Menu */
-#top-menu {
+.top-menu-style {
     .block;
     .card;
     margin: 0;
     padding-bottom: 0;
     padding-top: 0;
+
+
 
     ul {
         margin: 0;
@@ -130,16 +132,87 @@ a {
     }
 }
 
+@-webkit-keyframes ghostin {
+    0% {
+        margin-top: -200px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@keyframes ghostin {
+    0% {
+        margin-top: -200px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@-webkit-keyframes ghostout {
+    0% {
+        margin-top: 0;
+    }
+    100% {
+        margin-top: -200px;
+    }
+}
+
+@keyframes ghostout {
+    0% {
+        margin-top: 0;
+    }
+    100% {
+        margin-top: -200px;
+    }
+}
+
+#top-menu {
+    .top-menu-style;
+}
+
+#top-menu-ghost {
+    .top-menu-style;
+
+    
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+
+    ul {
+        -webkit-animation: ghostin 700ms ease;
+        animation: ghostin 700ms ease;
+
+        &.out {
+            -webkit-animation: ghostout 700ms ease;
+            animation: ghostout 700ms ease;
+        }
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+
+    
+}
+
 @media (min-width: 480px) {
-    #top-menu {
+    .top-menu-style {
         ul {
             padding-left: 20px;
         }
     }
+
+    #top-menu, #top-menu-ghost {
+        .top-menu-style;
+    }
 }
 
 @media (min-width: 768px) {
-    #top-menu {
+    .top-menu-style {
         ul {
             padding-left: 40px;
 
@@ -151,6 +224,10 @@ a {
                 }
             }
         }
+    }
+
+    #top-menu, #top-menu-ghost {
+        .top-menu-style;
     }
 }
 
@@ -198,6 +275,42 @@ a {
 /* End of About */
 
 /* Portfolio */
+@-webkit-keyframes slide {
+    0% {
+        margin-left: -100%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+@keyframes slide {
+    0% {
+        margin-left: -100%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+@-webkit-keyframes slideout {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -100%;
+    }
+}
+
+@keyframes slideout {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -100%;
+    }
+}
+
 #portfolio-container {
     .block;
     .card;
@@ -210,6 +323,19 @@ a {
 
     #skillset {
         overflow-x: hidden;
+
+        #skillset-desc {
+            width: 100%;
+
+            -webkit-animation: slide 1s ease;
+            animation: slide 1s ease;
+
+            &.out {
+                -webkit-animation: slideout 1s ease;
+                animation: slideout 1s ease;
+            }
+        }
+
 
         #skillset-close {
             .inline-block;
@@ -311,6 +437,41 @@ a {
 
 
 /* Portfolio Full */
+@-webkit-keyframes modalin {
+    0% {
+        margin-top: -100%;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@keyframes modalin {
+    0% {
+        margin-top: -100%;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@-webkit-keyframes modalout {
+    0% {
+        margin-top: 0;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
+
+@keyframes modalout {
+    0% {
+        margin-top: 0;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
 #modal-container {
     background: #fff;
     height: auto;
@@ -318,17 +479,28 @@ a {
     position: fixed;
     top: 0;
     z-index: 999999;
+
+
 }
 
 .modal-open {
     overflow: hidden;
 }
 
-.full-portfolio-container {
+#full-portfolio-container {
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 20px 20px 0 20px;
+
+    -webkit-animation: modalin 400ms ease;
+    animation: modalin 400ms ease;
+
+    &.out {
+        -webkit-animation: modalout 400ms ease;
+        animation: modalout 400ms ease;
+    }
+    
 
     .close-portfolio {
         background: @bg-color;

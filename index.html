@@ -19,6 +19,8 @@
 </head>
 <body>
     <nav id="top-menu"></nav>
+    <nav id="top-menu-ghost"></nav>
+
     <div id="hero">
         <div id="tagline-container">
             <div id="tagline">
@@ -73,16 +75,92 @@
             return [width, height];
         }
 
+        function scrollToElem(elem) {
+            var doc = document.documentElement;
+            var topW = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+
+            var elemTarget = document.getElementById(elem);
+            var topE = (elemTarget.offsetTop || elemTarget.scrollTop)  - (elemTarget.clientTop || 0);
+
+            var distance = topE - topW;
+
+            var duration = 600;
+
+            var step = Math.abs(Math.round(distance / 10));
+            var leap = (distance > 0) ? topW + Math.round(duration/step) : topW - Math.round(duration/step);
+
+            var smoothies = function() {
+                console.log(leap);
+                window.scroll(0, leap);
+                
+                if(distance > 0) {
+                    if(leap >= topE) {
+                        clearInterval(interval);
+                    }
+
+                    leap += Math.abs(Math.round(duration/step));
+                } else {
+                    if(leap <= topE) {
+                        clearInterval(interval);
+                    }
+                    leap -= Math.abs(Math.round(duration/step));
+                }
+                
+            }
+
+            var interval = setInterval(smoothies, Math.abs(Math.round(duration/step)));
+            
+        }
+
         var Navigation = React.createClass({
+            
+            handleClick: function(elem, e) {
+                e.preventDefault();
+
+                scrollToElem(elem);
+            },
             render: function() {
                 return (
                     <ul>
                         <li id="nav-to-home"><a href="http://destiyadian.com"><span className="nav-mobile">d</span> <span className="nav-desktop">destiyadian.com</span></a></li>
-                        <li><a href="#about"><i className="fa fa-question-circle"></i> <span className="nav-desktop">About</span></a></li>
-                        <li><a href="#portfolio"><i className="fa fa-cubes"></i> <span className="nav-desktop">Projects</span></a></li>
-                        <li><a href="#contact"><i className="fa fa-envelope"></i> <span className="nav-desktop">Contacts</span></a></li>
+                        <li><a href="#about" onClick={this.handleClick.bind(this, 'about')}><i className="fa fa-question-circle"></i> <span className="nav-desktop">About</span></a></li>
+                        <li><a href="#portfolio" onClick={this.handleClick.bind(this, 'portfolio')}><i className="fa fa-cubes"></i> <span className="nav-desktop">Projects</span></a></li>
+                        <li><a href="#contact" onClick={this.handleClick.bind(this, 'contact')}><i className="fa fa-envelope"></i> <span className="nav-desktop">Contacts</span></a></li>
                         <li><a href="http://blog.destiyadian.com" target="_blank"><i className="fa fa-newspaper-o"></i> <span className="nav-desktop">Blog</span></a></li>
                     </ul>
+                );
+            }
+        });
+
+        var MainNav = React.createClass({
+            addGhostMenu: function() {
+                var doc = document.documentElement;
+                var topW = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+
+                var ghostMenu = document.getElementById('top-menu-ghost').innerHTML;
+                if(topW >= 200 && ghostMenu == "") {
+                    console.log('rendered');
+                    React.render(
+                        <Navigation />,
+                        document.getElementById('top-menu-ghost')
+                    );
+                } else if(topW < 200 && ghostMenu != "") {
+                    console.log('removed');
+                    var ghostContainer = document.getElementById('top-menu-ghost').getElementsByTagName('ul');
+                    ghostContainer[0].className = 'out';
+
+                    setTimeout(function() {
+                        React.unmountComponentAtNode(document.getElementById('top-menu-ghost'))
+                    }, 1000);
+                    
+                }
+            },
+            componentDidMount: function() {
+                window.addEventListener('scroll', this.addGhostMenu);
+            },
+            render: function() {
+                return (
+                    <Navigation />
                 );
             }
         });
@@ -94,10 +172,20 @@
                 }
             },
             handleClick: function(summary, e) {
-                React.render(
-                    <SkillsetDesc skill={e.target.innerHTML} summary={summary} />,
-                    document.getElementById('skillset')
-                );
+                var dom = document.getElementById("skillset-desc");
+                dom.className = dom.className + ' out';
+
+                var desc = e.target.innerHTML;
+
+                setTimeout(function() {
+                    React.render(
+                        <SkillsetDesc skill={desc} summary={summary} />,
+                        document.getElementById('skillset')
+                    );
+                }, 1000)
+
+                
+                
             },
             componentWillMount: function() {
                 var thisObj = this;
@@ -123,7 +211,7 @@
             render: function() {
                 var thisObj = this;
                 return (
-                    <div>
+                    <div id="skillset-desc">
                         <h2>Skillset</h2>
                         <p>
                         {this.state.skills.map(function(skill) {
@@ -137,19 +225,25 @@
 
         var SkillsetDesc = React.createClass({
             handleClick: function(e) {
-                React.render(
-                    <Skillset />,
-                    document.getElementById('skillset')
-                );
+                var dom = document.getElementById("skillset-desc");
+                dom.className = dom.className + ' out';
+
+                setTimeout(function() {
+                    React.render(
+                        <Skillset />,
+                        document.getElementById('skillset')
+                    );
+                }, 1000);
+
             },
             render: function() {
-                
                 return (
-                    <div>
+                    <div id="skillset-desc">
                         <h3><i className="fa fa-arrow-left" id="skillset-close" onClick={this.handleClick}></i>  Skillset : {this.props.skill}</h3>
                         <p>
                             {this.props.summary}
                         </p>
+                        
                     </div>
                     
                 );
@@ -212,8 +306,13 @@
             },
             handleCloseClick: function(e) {
                 e.preventDefault();
-                
-                React.unmountComponentAtNode(document.getElementById('modal-container'));
+
+                var dom = document.getElementById("full-portfolio-container");
+                dom.className = dom.className + ' out';
+
+                setTimeout(function() {
+                    React.unmountComponentAtNode(document.getElementById('modal-container'));
+                }, 400);
             },
             render: function() {
                 var styles = {
@@ -230,7 +329,7 @@
 
 
                 return (
-                    <div className="full-portfolio-container" style={styles}>
+                    <div id="full-portfolio-container" style={styles}>
                         <a href className="btn close-portfolio" onClick={this.handleCloseClick}>
                             X
                         </a>
@@ -307,7 +406,7 @@
         });
 
         React.render(
-            <Navigation />,
+            <MainNav />,
             document.getElementById('top-menu')
         );
 
