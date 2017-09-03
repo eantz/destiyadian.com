@@ -1,2 +1,0 @@
-# destiyadian.com
-My Homepage
