@@ -85,7 +85,6 @@ console.log('linkedin: https://www.linkedin.com/in/destiya-wijayanto-48a66819/')
 console.log('github: https://github.com/eantz');
 
 
-
 var subhero = document.getElementsByClassName('sub-hero')[0];
 
 subhero.addEventListener('click', function() {
