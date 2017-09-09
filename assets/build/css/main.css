@@ -8,6 +8,13 @@ body {
   font-family: 'Merriweather', serif;
   width: 100%; }
 
+a {
+  color: #444;
+  font-weight: bold;
+  text-decoration: none; }
+  a:hover, a:active, a:focus {
+    text-decoration: underline; }
+
 .hero-container {
   align-content: center;
   display: flex;
@@ -18,5 +25,12 @@ body {
   width: 100%; }
   .hero-container .hero, .hero-container .sub-hero {
     width: 100%; }
+
+.swal2-modal .swal2-content {
+  font-size: 16px;
+  line-height: 20px; }
+  .swal2-modal .swal2-content .hint {
+    color: #878787;
+    font-size: 14px; }
 
 /*# sourceMappingURL=main.css.map */

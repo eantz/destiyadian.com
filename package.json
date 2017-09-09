@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/eantz/destiyadian.com#readme",
   "dependencies": {
-    "sanitize.css": "^5.0.0"
+    "sanitize.css": "^5.0.0",
+    "sweetalert2": "^6.6.10"
   }
 }

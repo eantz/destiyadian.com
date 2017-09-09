@@ -67,7 +67,7 @@ console.log(
     "#wordpress #html #css #jquery"
 );
 console.log(
-    "FDC Singapore (http://fdc.com.sg)\n" +
+    "FDC Singapore (http://fdc.sg)\n" +
     "#drupa7 #html #css #jquery"
 )
 console.log(
@@ -83,3 +83,62 @@ console.log('facebook: https://facebook.com/destiya');
 console.log('twitter: https://twitter.com/eantz');
 console.log('linkedin: https://www.linkedin.com/in/destiya-wijayanto-48a66819/');
 console.log('github: https://github.com/eantz');
+
+
+
+var subhero = document.getElementsByClassName('sub-hero')[0];
+
+subhero.addEventListener('click', function() {
+    swal({
+        title: 'Nope...',
+        type: 'info',
+        html: "While you are thinking about where<br>you can find me on this page,<br>" +
+                "why not heading to my <a href=\"http://blog.destiyadian.com\" target=\"_blank\">blog</a>?"
+
+    })
+});
+
+// code from : https://stackoverflow.com/questions/31626852/how-to-add-konami-code-in-a-website-based-on-html
+var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down',
+    65: 'a',
+    66: 'b'
+};
+
+// the 'official' Konami Code sequence
+var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+
+// a variable to remember the 'position' the user has reached so far.
+var konamiCodePosition = 0;
+
+// add keydown event listener
+document.addEventListener('keydown', function(e) {
+// get the value of the key code from the key map
+var key = allowedKeys[e.keyCode];
+// get the value of the required key from the konami code
+var requiredKey = konamiCode[konamiCodePosition];
+
+// compare the key with the required key
+if (key == requiredKey) {
+
+    // move to the next key in the konami code sequence
+    konamiCodePosition++;
+
+    // if the last key is reached, activate cheats
+    if (konamiCodePosition == konamiCode.length) {
+        swal({
+            title: 'Hhhhmmmm...',
+            type: 'info',
+            html: 'I know that you will execute this code.<br>' + 
+                    "Unfortunately you can't find me via this code.<br><br>" + 
+                    "<em class=\"hint\">hint: go to my <a href=\"https://github.com/eantz/destiyadian.com\" target=\"_blank\">github<a></em>"
+        });
+        konamiCodePosition = 0;
+    }
+} else {
+    konamiCodePosition = 0;
+}
+});
