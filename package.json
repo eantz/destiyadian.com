@@ -1,37 +1,33 @@
 {
-  "name": "destiyadian-v2",
-  "version": "2.0.0",
-  "description": "personal portfolio",
-  "main": "index.html",
-  "dependencies": {
-    "babel-core": "^5.8.22",
-    "react": "^0.13.3"
-  },
-  "devDependencies": {
-    "babel-loader": "^5.3.2",
-    "css-loader": "^0.18.0",
-    "extract-text-webpack-plugin": "^0.8.2",
-    "less": "^2.5.1",
-    "less-loader": "^2.2.0",
-    "path": "^0.11.14",
-    "style-loader": "^0.12.3",
-    "webpack": "^1.12.1"
-  },
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/eantz/destiyadian.com.git"
+    "url": "git+https://github.com/eantz/destiyadian.com.git"
   },
-  "keywords": [
-    "react",
-    "portfolio"
-  ],
-  "author": "@eantz",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/eantz/destiyadian.com/issues"
   },
-  "homepage": "https://github.com/eantz/destiyadian.com"
+  "homepage": "https://github.com/eantz/destiyadian.com#readme",
+  "dependencies": {
+    "sanitize.css": "^5.0.0",
+    "sweetalert2": "^6.6.10"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.8.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-minify": "^1.0.0",
+    "gulp-rev": "^8.0.0",
+    "gulp-rev-replace": "^0.4.3"
+  }
 }
