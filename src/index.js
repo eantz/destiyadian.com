@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route, Router } from 'react-router-dom';
 // import './index.scss';
 
 import './assets/css/_main.scss';
@@ -14,7 +14,7 @@ import history from './history';
 
 const Root = () => {
   return (
-    <BrowserRouter history={history}>
+    <Router history={history}>
       <div className="root-router-child">
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
@@ -23,7 +23,7 @@ const Root = () => {
         <Route path="/projects/:projectid" component={ProjectItem} />
       </div>
       
-    </BrowserRouter>
+    </Router>
   )
 }
 

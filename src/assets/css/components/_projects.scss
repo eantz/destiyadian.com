@@ -1,3 +1,17 @@
+.project-stacks {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+
+    li {
+        color: $grey;
+        display: inline-block;
+        line-height: 28px;
+        margin-left: 15px;
+    }
+}
+
 .projects {
     align-items: flex-start;
     display: flex;
@@ -39,19 +53,82 @@
         &-title {
             font-size: 32px;
         }
+    }
+}
 
-        &-stacks {
-            list-style: none;
-            margin: 0 auto;
-            padding: 0;
-            width: 80%;
+.project-single {
+    margin: 50px auto;
+    text-align: center;
+    width: 80%;
 
-            li {
-                color: $grey;
-                display: inline-block;
-                line-height: 28px;
-                margin-left: 15px;
+    .project {
+        &-logo {
+            display: block;
+            margin: 0 auto 30px auto;
+            max-width: 200px;
+        }
+
+        &-url {
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        &-description {
+            margin-bottom: 80px;
+            margin-top: 80px;
+        }
+
+        &-images {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        &-thumbnail {
+            cursor: pointer;
+            margin-bottom: 40px;
+            width: 30%;
+
+            &:hover, &:active, &:focus {
+                box-shadow: 0px 0px 8px $grey;
+            }
+
+            img {
+                height: auto;
+                width: 100%;
             }
         }
+    }
+}
+
+.modal-image {
+    margin: 50px auto;
+    width: 80%;
+
+    &:focus {
+        outline: none;
+    }
+
+    .modal-close {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: right;
+
+        span {
+            background: $link;
+            color: $border;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+    }
+
+    img {
+        display: block;
+        height: auto;
+        width: 100%;
     }
 }

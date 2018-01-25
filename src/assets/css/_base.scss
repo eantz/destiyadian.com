@@ -58,3 +58,19 @@ a {
         text-decoration: underline;
     }
 }
+
+.ReactModal__Body--open {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.ReactModal__Overlay {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.ReactModal__Content {
+    background: #fff;
+    padding: 10px;
+}
