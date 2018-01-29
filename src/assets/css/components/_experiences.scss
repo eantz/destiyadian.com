@@ -1,0 +1,44 @@
+.experience-timeline {
+    list-style: none;
+    margin: 80px auto;
+    padding: 0;
+    width: 80%;
+
+    li {
+        border-left: 8px solid $border;
+        display: block;
+        margin: 0 0 10px 100px;
+        padding: 5px 10px 10px 25px;
+        position: relative;
+        width: 80%;
+
+        &:before {
+            background: $border;
+            border-radius: 50%;
+            content: "";
+            height: 30px;
+            left: -19px;
+            position: absolute;
+            top: 0;
+            width: 30px;
+        }
+    }
+
+    .experience {
+        &-year {
+            font-size: 28px;
+            left: -100px;
+            position: absolute;
+            top: -5px;
+        }
+
+        &-title {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        &-description {
+            line-height: 28px;
+        }
+    }
+}
