@@ -5,7 +5,7 @@ import { Route, Router } from 'react-router-dom';
 
 import './assets/css/_main.scss';
 import Home from './components/Home';
-import About from './components/About';
+import Contact from './components/Contact';
 import Experiences from './components/Experiences';
 import Projects from './components/Projects';
 import ProjectItem from './components/ProjectItem';
@@ -17,7 +17,7 @@ const Root = () => {
     <Router history={history}>
       <div className="root-router-child">
         <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
         <Route path="/experiences" component={Experiences} />
         <Route exact path="/projects" component={Projects} />
         <Route path="/projects/:projectid" component={ProjectItem} />

@@ -1,0 +1,31 @@
+.contact-content {
+    margin: 50px auto;
+    width: 60%;
+}
+
+.contact {
+    &-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &-item {
+        display: block;
+        margin-bottom: 30px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    &-icon {
+        float: left;
+        width: 60px;
+    }
+
+    &-detail {
+        float: left;
+        font-size: 18px;
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+}
