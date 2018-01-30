@@ -21,11 +21,11 @@
 
     .project-item {
         border: 1px solid $border;
-        margin: 0 10px 30px;
+        margin: 0 0 30px;
         min-height: 300px;
         padding: 10px;
         text-align: center;
-        width: 45%;
+        width: 100%;
 
         &:hover, &:active, &:focus {
             box-shadow: 1px 1px 10px $grey;
@@ -90,7 +90,7 @@
         &-thumbnail {
             cursor: pointer;
             margin-bottom: 40px;
-            width: 30%;
+            width: 100%;
 
             &:hover, &:active, &:focus {
                 box-shadow: 0px 0px 8px $grey;
@@ -130,5 +130,39 @@
         display: block;
         height: auto;
         width: 100%;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .projects {
+        .project-item {
+            margin: 0 10px 30px;
+            width: 40%;
+        }
+    }
+    
+    .project-single {
+        .project {
+            &-thumbnail {
+                width: 45%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .projects {
+        .project-item {
+            margin: 0 10px 30px;
+            width: 45%;
+        }
+    }
+
+    .project-single {
+        .project {
+            &-thumbnail {
+                width: 30%;
+            }
+        }
     }
 }

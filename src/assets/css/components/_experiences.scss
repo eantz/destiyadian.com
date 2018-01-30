@@ -7,10 +7,10 @@
     li {
         border-left: 8px solid $border;
         display: block;
-        margin: 0 0 10px 100px;
+        margin: 0;
         padding: 5px 10px 10px 25px;
         position: relative;
-        width: 80%;
+        width: 90%;
 
         &:before {
             background: $border;
@@ -26,10 +26,9 @@
 
     .experience {
         &-year {
-            font-size: 28px;
-            left: -100px;
-            position: absolute;
-            top: -5px;
+            font-size: 20px;
+            margin-top: -5px;
+            margin-bottom: 30px;
         }
 
         &-title {
@@ -39,6 +38,26 @@
 
         &-description {
             line-height: 28px;
+        }
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .experience-timeline {
+        li {
+            margin: 0 0 10px 100px;
+            padding: 5px 10px 10px 25px;
+            width: 80%;
+        }
+
+        .experience {
+            &-year {
+                font-size: 28px;
+                left: -100px;
+                margin: 0;
+                position: absolute;
+                top: -5px;
+            }
         }
     }
 }
