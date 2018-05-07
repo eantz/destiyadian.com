@@ -173,6 +173,43 @@ const sampleProjects = {
         full: "kelasbahasa-tutor.jpg"
       },
     ]
+  },
+  'pawarto': { 
+    title: 'Pawarto', 
+    url: 'https://themeforest.net/item/pawarto-personal-clean-blog-html-template/19663901', 
+    slug: 'pawarto', 
+    stack: ['html', 'bootstrap 3', 'sass', 'jQuery'], 
+    logo: 'logo_pawarto.png', 
+    description: "Pawarto is personal blog HTML Template based on Pawarto PSD Template. " + 
+      "It has several styles including the homepage, blog, single post, store, about, and contact pages. " + 
+      "This template has a clean and classic UI design. This template is carefully crafted so " +  
+      "the components are simple, easy to understand, and reusable across all styes", 
+    images: [ 
+      { 
+        thumb: 'pawarto-home-thumb.jpg', 
+        full: 'pawarto-home.jpg' 
+      }, 
+      { 
+        thumb: 'pawarto-single-thumb.jpg', 
+        full: 'pawarto-single.jpg' 
+      }, 
+      { 
+        thumb: 'pawarto-categories-thumb.jpg', 
+        full: 'pawarto-categories.jpg' 
+      }, 
+      { 
+        thumb: 'pawarto-portfolio-thumb.jpg', 
+        full: 'pawarto-portfolio.jpg' 
+      }, 
+      { 
+        thumb: 'pawarto-gallery-thumb.jpg', 
+        full: 'pawarto-gallery.jpg' 
+      }, 
+      { 
+        thumb: 'pawarto-contact-thumb.jpg', 
+        full: 'pawarto-contact.jpg' 
+      }, 
+    ] 
   }
 }
 
