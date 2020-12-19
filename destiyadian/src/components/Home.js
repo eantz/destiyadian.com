@@ -16,12 +16,11 @@ class Home extends React.Component {
               <li><Link to="/projects">Projects</Link></li>
               <li><Link to="/experiences">Experiences</Link></li>
               <li><Link to="/contact">Contact</Link></li>
-              <li><a href="http://blog.destiyadian.com">Blog</a></li>
             </ul>
           </div>
         </div>
 
-        
+
       </div>
     )
   }
