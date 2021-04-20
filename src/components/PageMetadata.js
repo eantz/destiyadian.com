@@ -12,8 +12,8 @@ class PageMetadata extends React.Component {
         setTimeout(() => {
             this.setState({metadata: [
                 {
-                    'property': 'og:name',
-                    'content': 'This is name open graph'
+                    'property': 'og:title',
+                    'content': 'This is hidden page title'
                 },
                 {
                     'property': 'og:image',

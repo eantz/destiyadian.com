@@ -11,6 +11,7 @@ import Projects from './components/Projects';
 import ProjectItem from './components/ProjectItem';
 import history from './history';
 import HiddenPage from './components/HiddenPage';
+import HiddenPage2 from './components/HiddenPage2';
 // import registerServiceWorker from './registerServiceWorker';
 
 const Root = () => {
@@ -23,6 +24,7 @@ const Root = () => {
         <Route exact path="/projects" component={Projects} />
         <Route path="/projects/:projectid" component={ProjectItem} />
         <Route path="/hidden" component={HiddenPage} />
+        <Route path="/hidden2" component={HiddenPage2} />
       </div>
       
     </Router>
