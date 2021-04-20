@@ -13,9 +13,9 @@ class About extends React.Component {
           <ul className="contact-list">
             {contactData.map((contact, i) => {
               var url = contact.url;
-              if(contact['type'] === 'email') {
+              if (contact['type'] === 'email') {
                 url = 'mailto:' + url;
-              } else if(contact['type'] === 'skype') {
+              } else if (contact['type'] === 'skype') {
                 url = 'skype:' + url + '?chat';
               }
 
@@ -24,7 +24,7 @@ class About extends React.Component {
                 <li key={i} className="contact-item">
                   <img src={`/images/${contact.image}`} alt="icon contact" className="contact-icon" />
                   <span className="contact-detail">
-                    <a href={url} target="_blank">{contact.url}</a>
+                    <a href={url} target="_blank" rel="noreferrer">{contact.url}</a>
                   </span>
                 </li>
               )

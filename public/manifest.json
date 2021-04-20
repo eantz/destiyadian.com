@@ -1,6 +1,6 @@
 {
-  "short_name": "destiyadian.com",
-  "name": "Destiya's personal website",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,13 +8,18 @@
       "type": "image/x-icon"
     },
     {
-      "src": "/android-chrome-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png"
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
-  "theme_color": "#ffffff",
+  "theme_color": "#000000",
   "background_color": "#ffffff"
 }

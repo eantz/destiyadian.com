@@ -16,7 +16,7 @@ class ProjectItem extends React.Component {
   }
 
   handleImageClick(imgObj) {
-    this.setState({showModal: true, modalImg: imgObj});
+    this.setState({ showModal: true, modalImg: imgObj });
   }
 
   render() {
@@ -31,7 +31,7 @@ class ProjectItem extends React.Component {
         <div className="project-single">
           <img src={`/images/${project.logo}`} alt={`Logo ${project.title}`} className="project-logo" />
 
-          <a href={project.url} target="_blank" className="project-url">{project.url}</a>
+          <a href={project.url} target="_blank" rel="noreferrer" className="project-url">{project.url}</a>
 
           <ul className="project-stacks">
             {project.stack.map((stack, i) => <li key={i}>#{stack}</li>)}
@@ -44,16 +44,16 @@ class ProjectItem extends React.Component {
           <div className="project-images">
             {project.images.map((image, i) => {
               return (
-                <div className="project-thumbnail" key={i} onClick={() => {this.handleImageClick(image)}} >
+                <div className="project-thumbnail" key={i} onClick={() => { this.handleImageClick(image) }} >
                   <img src={`/images/${image.thumb}`} alt="thumb" />
                 </div>
               )
             })}
           </div>
 
-          { modalImage }
+          {modalImage}
         </div>
-        
+
       </div>
     )
   }

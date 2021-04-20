@@ -1,5 +1,10 @@
 const experienceData = [
   {
+    year: '2018',
+    title: 'Backend Engineer at Ruangguru',
+    description: 'Responsible for developing and maintaining various client-facing product such as Ruang Belajar, student report, forum, etc.'
+  },
+  {
     year: '2017',
     title: 'Backend Developer at MamiKos',
     description: 'Building Indonesia #1 Kost directory. I took backend role here and develop ' +
@@ -27,8 +32,8 @@ const experienceData = [
   {
     year: '2009',
     title: 'Junior Web Developer at Wacana Inti Informatika',
-    description: 'While still studying at university, I took a part-time job as Junior Web Developer. ' + 
-      'This is my first ever job as developer. Later in mid 2010, I was converted to a ' + 
+    description: 'While still studying at university, I took a part-time job as Junior Web Developer. ' +
+      'This is my first ever job as developer. Later in mid 2010, I was converted to a ' +
       'full-time employee.'
   },
   {

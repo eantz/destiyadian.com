@@ -22,7 +22,7 @@ const Root = () => {
         <Route exact path="/projects" component={Projects} />
         <Route path="/projects/:projectid" component={ProjectItem} />
       </div>
-      
+
     </Router>
   )
 }
