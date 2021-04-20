@@ -10,6 +10,7 @@ import Experiences from './components/Experiences';
 import Projects from './components/Projects';
 import ProjectItem from './components/ProjectItem';
 import history from './history';
+import HiddenPage from './components/HiddenPage';
 // import registerServiceWorker from './registerServiceWorker';
 
 const Root = () => {
@@ -21,6 +22,7 @@ const Root = () => {
         <Route path="/experiences" component={Experiences} />
         <Route exact path="/projects" component={Projects} />
         <Route path="/projects/:projectid" component={ProjectItem} />
+        <Route path="/hidden" component={HiddenPage} />
       </div>
       
     </Router>
