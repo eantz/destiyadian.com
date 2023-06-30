@@ -7,16 +7,6 @@ import ReactModal from 'react-modal';
 ReactModal.setAppElement('#root-modal');
 
 export default function ModalImage(prop: {image: string, showModal: boolean, handleCloseModal: any}) {
-    // const [showModal, setShowModal] = useState(prop.showModal)
-
-    // useEffect(() => {
-    //     console.log('show modal : ' + prop.showModal)
-    //     setShowModal(prop.showModal)
-    // }, [prop.showModal])
-    
-    // function closeModal() {
-    //     setShowModal(false)
-    // }
     
     return (
         <ReactModal className="modal-image"

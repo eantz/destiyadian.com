@@ -1,9 +1,9 @@
 import experienceData from "../constant/experiences"
 import Header from "../components/header"
 
-function ExperienceItem(prop: {i: number, year: string, title: string, description: string}) {
+function ExperienceItem(prop: {year: string, title: string, description: string}) {
   return (
-    <li key={prop.i}>
+    <li>
       <div className="experience-year">{prop.year}</div>
       <div className="experience-content">
         <h4 className="experience-title">{prop.title}</h4>
@@ -19,7 +19,7 @@ export default function Page() {
 
   const experienceItems = experienceData.map((experience, i) => {
     return (
-      <ExperienceItem i={i} year={experience.year} title={experience.title} description={experience.description} />
+      <ExperienceItem key={i} year={experience.year} title={experience.title} description={experience.description} />
     )
   })
   

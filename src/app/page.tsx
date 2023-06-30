@@ -7,7 +7,7 @@ export default function Home() {
     <div className="hero-container">
         <div className="hero">
           <h1>
-            Hello, I'm Destiya
+            Hello, I&apos;m Destiya
           </h1>
 
           <div className="sub-hero">

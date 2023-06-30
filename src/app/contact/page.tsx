@@ -1,7 +1,7 @@
 import contactData from "../constant/contact";
 import Header from "../components/header";
 
-function ContactItem(prop: {i: number, url: string, image: string, contactType: string}) {
+function ContactItem(prop: {url: string, image: string, contactType: string}) {
     
     let url = prop.url
 
@@ -13,7 +13,7 @@ function ContactItem(prop: {i: number, url: string, image: string, contactType: 
 
 
     return (
-        <li key={prop.i} className="contact-item">
+        <li className="contact-item">
             <img src={`/images/${prop.image}`} alt="icon contact" className="contact-icon" />
             <span className="contact-detail">
             <a href={url} target="_blank">{url}</a>
@@ -25,7 +25,7 @@ function ContactItem(prop: {i: number, url: string, image: string, contactType: 
 export default function Page() {
     
     const contactItem = contactData.map((contact, i) => {
-        return <ContactItem i={i} url={contact.url} image={contact.image} contactType={contact.type} />
+        return <ContactItem key={i} url={contact.url} image={contact.image} contactType={contact.type} />
     })
 
     return (
