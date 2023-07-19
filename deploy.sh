@@ -2,11 +2,13 @@
 if ! command -v nvm &> /dev/null
 then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-    nvm install 18.16.1
 fi
 
 export NVM_DIR=$HOME/.nvm;
 . $NVM_DIR/nvm.sh;
+
+nvm install 18
+
 
 WORKSPACEDIR=/home/ubuntu/destiyadian.com
 if [ -d "$WORKSPACEDIR" ]
@@ -19,7 +21,7 @@ else
     cd destiyadian.com
 fi
 
-nvm use v18
+nvm use 18
 
 npm install &&
 npm run build
