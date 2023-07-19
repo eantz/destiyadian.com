@@ -1,5 +1,5 @@
 #!/bin/bash
-if ! command -v <nvm> &> /dev/null
+if ! command -v nvm &> /dev/null
 then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
     nvm install 18.16.1
@@ -24,7 +24,7 @@ nvm use v18
 npm install &&
 npm run build
 
-if ! command -v <pm2> &> /dev/null
+if ! command -v pm2 &> /dev/null
 then
     npm install -g pm2
 
