@@ -3,14 +3,6 @@ if ! command -v <nvm> &> /dev/null
 then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
     nvm install 18.16.1
-
-    ## install codedeploy agent
-    sudo apt install -y ruby-full wget &&
-    cd /home/ubuntu &&
-    wget https://aws-codedeploy-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/latest/install &&
-    chmod +x ./install &&
-    sudo ./install auto > /tmp/logfile &&
-    sudo service codedeploy-agent start
 fi
 
 export NVM_DIR=$HOME/.nvm;
