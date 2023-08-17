@@ -1,4 +1,9 @@
 #!/bin/bash
+sudo apt-get update -y
+
+sudo apt-get install nginx -y && 
+sudo ufw allow 'Nginx Full'
+
 if ! command -v nvm &> /dev/null
 then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
@@ -32,10 +37,16 @@ then
 
     pm2 start npm --name destiyadian -- start &&
     pm2 save
+
+    cp -f nginx.default /etc/nginx/sites-available/default
+    sudo systemctl restart nginx
+    
 else 
     pm2 restart destiyadian &&
     pm2 save
 fi
+
+
 
 
 
