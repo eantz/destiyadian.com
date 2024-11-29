@@ -16,7 +16,7 @@ function ContactItem(prop: {url: string, image: string, contactType: string}) {
         <li className="contact-item">
             <img src={`/images/${prop.image}`} alt="icon contact" className="contact-icon" />
             <span className="contact-detail">
-            <a href={url} target="_blank">{url}</a>
+            <a href={url} target="_blank">{prop.url}</a>
             </span>
         </li>
     )
