@@ -29,12 +29,7 @@ const contactData: Array<contact> = [
       image: 'icon-twitter.png',
       url: 'https://twitter.com/eantz',
       type: 'link'
-    },
-    {
-      image: 'icon-skype.png',
-      url: 'eantz88',
-      type: 'skype'
-    },
+    }
   ];
   
   export default contactData;
