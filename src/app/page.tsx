@@ -14,6 +14,7 @@ export default function Home() {
             <ul className="home-menu">
               <li><Link href="/projects">Projects</Link></li>
               <li><Link href="/experiences">Experiences</Link></li>
+              <li><Link href="/articles">Articles</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
